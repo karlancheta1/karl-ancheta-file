@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Magic 8-Ball</title>
+ <style>
+   
+ 
+      body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #250;
+      color: white;
+      padding: 20px;
+      }
+       
+
+      input {
+      padding:15px;
+      border:none;
+      box-shadow:2px 2px 15px;
+      width: 70%;
+      margin-bottom: 10px; 
+      border-radius:10px;         
+      }
+
+      button {
+      padding: 10px 15px;
+      background: silver;
+      color: #000;
+      border:none;
+      cursor: pointer;
+      border-radius:10px;
+      font-size: 16px;
+      box-shadow:6px 6px 15px;
+      }
+      
+      button:hover {
+      background: #665;
+      }
+
+      .ball {
+      width: 150px;
+      height: 150px;
+      background: black;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+      position: relative;
+      box-shadow: 0 0 30px rgba(255, 250, 255, 1.1);
+      }
+      
+      .answer {
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      text-align: center;
+      width: 80%;
+      transition: opacity 0.5s;
+      }
+       
+ </style>
+</head>
+<body>
+
+   <h3 style="font-family: Courier New;">Ask the</h3><h1 style="color:#ccc; font-family: Courier New">♦MAGIC 8-BALL♦</h1>
+   <h1 style="box-shadow: 0 0 200px rgba(200,255,255, 10.10); height:31px; background-color:#240; border-radius:50px;">🎱🎱🎱🎱🎱🎱🎱🎱</h1>
+   <input type="text" id="question" placeholder="Ask a Yes/No question..."</input>
+    <br><br>
+   <button id="shake-btn" style="font-family: Georgia;">Shake the 8-Ball</button><br><br>
+   <p style="box-shadow:2px 2px 15px; border-radius:10px; background-color:#eda978; color:#000;"><b>_________________________________________________</b></p>
+   <div class="ball">
+   <div class="answer" id="answer"><h1>🔮</h1></div>
+   </div>
+   <p style="box-shadow:2px 2px 15px; border-radius:10px; background-color:#eda978; color:#000"><b>_________________________________________________</b></p>
+
+ <script>
+
+      const answers = [
+      "Yes!", "No.", "Ask again later.", "Definitely!", "I don't think so.",
+      "Absolutely!", "Not sure...", "Try again.", "Signs point to yes.", "Very doubtful."];
+
+      const button = document.getElementById("shake-btn");
+      const answerBox = document.getElementById("answer");
+      button.addEventListener("click", function() {
+      const question = document.getElementById("question").value.trim();
+      
+      if (question === "") {
+      answerBox.textContent = "Ask a question!";
+      return;
+      }
+
+      answerBox.style.opacity = "0"; // Hide answer briefly
+      setTimeout(() => {
+      const randomIndex = Math.floor(Math.random() * answers.length);
+      answerBox.textContent = answers[randomIndex];
+      answerBox.style.opacity = "1"; // Fade answer back in
+      }, 500);
+      });
+
+ </script>
+</body>
+</html>
